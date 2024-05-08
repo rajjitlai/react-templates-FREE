@@ -6,6 +6,8 @@ import "swiper/css/navigation"
 
 import { useState } from 'react'
 
+import "./menu_01.css"
+
 const navs = [
     <>
         <h2>About</h2>
