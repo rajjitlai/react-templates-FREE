@@ -10,6 +10,8 @@ import React, {
 
 import "./dropdown_01.css"
 
+import { close, dropdown, account } from "../../assets/index.js"
+
 const Icon: FC<PropsWithChildren> = ({ children }) => <i className="material-symbols-outlined">{children}</i>
 
 const useOnClickOutside = (
@@ -39,13 +41,13 @@ export const DropDown_01 = () => {
     const ref = useRef<HTMLDivElement>(null)
     useOnClickOutside(ref, () => setIsOpen(false))
 
-    return(
-        <div ref={ref} className={`dropdown ${isOpen ? "open": ""}`}>
+    return (
+        <div ref={ref} className={`dropdown ${isOpen ? "open" : ""}`}>
             <button onClick={() => setIsOpen(!isOpen)}>
                 <Icon>account_circle</Icon>
                 <span>James Bond</span>
                 <Icon>
-                    {isOpen? "close" : "expand_more"}
+                    {isOpen ? `close` : "expand_more"}
                 </Icon>
             </button>
             <div className="menu">
