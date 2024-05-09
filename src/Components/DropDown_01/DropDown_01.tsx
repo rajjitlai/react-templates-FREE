@@ -10,7 +10,9 @@ import React, {
 
 import "./dropdown_01.css"
 
-import { close, dropdown, account } from "../../assets/index.js"
+import close from "../../assets/close.svg"
+import dropdown from "../../assets/dropdown.png"
+import account from "../../assets/account.png"
 
 const Icon: FC<PropsWithChildren> = ({ children }) => <i className="material-symbols-outlined">{children}</i>
 
@@ -44,15 +46,15 @@ export const DropDown_01 = () => {
     return (
         <div ref={ref} className={`dropdown ${isOpen ? "open" : ""}`}>
             <button onClick={() => setIsOpen(!isOpen)}>
-                <Icon>account_circle</Icon>
+                <Icon><img src={account} width="45px" /></Icon>
                 <span>James Bond</span>
                 <Icon>
-                    {isOpen ? `close` : "expand_more"}
+                    {isOpen ? <img src={close} alt="close" /> : <img src={dropdown} alt="dropdown" width="30px" />}
                 </Icon>
             </button>
             <div className="menu">
                 <button>
-                    <Icon>person</Icon>
+                    <Icon><img src={account} width="45px" /></Icon>
                     <span>Profile</span>
                 </button>
             </div>
