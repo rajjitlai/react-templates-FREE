@@ -1,3 +1,7 @@
+body {
+    background-color: #fff !important;
+}
+
 button,
 input {
     font-family: "Poppins";
@@ -21,7 +25,7 @@ input {
 }
 
 .search:is(:hover, .open) {
-    background: rgba(0, 0, 0, 0.6%);
+    background: rgba(0, 0, 0, 0.06);
 }
 
 .search.open input {
@@ -55,7 +59,7 @@ input {
     border-radius: 28px;
     visibility: hidden;
     opacity: 0;
-    background: rgb(0 0 0 / 15%);
+    background: rgba(0, 0, 0, 0.15);
     transition: 0.3s;
 }
 
@@ -64,7 +68,7 @@ input {
     opacity: 1;
 }
 
-.items button{
+.items button {
     padding: 20px;
     white-space: nowrap;
 }
