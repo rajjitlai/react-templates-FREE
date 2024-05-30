@@ -22,7 +22,7 @@ button {
     opacity: 1;
 }
 
-.swiper-slide>div {
+.swiper-slide > .nav-content {
     margin-top: -73px;
 }
 
@@ -40,13 +40,11 @@ button {
     transition: 0.3s;
 }
 
-:is(.swiper-button-prev,
-    .swiper-button-next):hover {
+:is(.swiper-button-prev, .swiper-button-next):hover {
     opacity: 1;
 }
 
-:is(.swiper-button-next,
-    .swiper-button-prev).swiper-button-disabled {
+:is(.swiper-button-next, .swiper-button-prev).swiper-button-disabled {
     opacity: 0.1;
     cursor: default;
 }
@@ -71,7 +69,7 @@ button {
     left: -10%;
     width: 120%;
     height: 120%;
-    background-image: url('/src/assets/bg.png');
+    background-image: url('/assets/bg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -90,13 +88,13 @@ button {
     place-items: center;
     width: 88px;
     height: 88px;
-    background-image: url("/src/assets/menu.svg");
+    background-image: url('/assets/menu.svg');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .burger.open {
-    background: url('/src/assets/close.svg') no-repeat center;
+    background: url('/assets/close.svg') no-repeat center;
 }
 
 .menu {
