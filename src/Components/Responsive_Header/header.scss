@@ -61,65 +61,65 @@ ul {
         width: 100%;
         padding: 20px 10px;
         background-color: #fff;
-    }
 
-    & .nItem {
-        padding: 10px 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid #4f46e5;
-        border-radius: 10px;
-        text-align: center;
+        & .nItem {
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #4f46e5;
+            border-radius: 10px;
+            text-align: center;
 
-        & i {
-            font-size: 1.25rem;
-        }
+            & i {
+                font-size: 1.25rem;
+            }
 
-        &:hover {
-            background-color: #4f46e5;
-            cursor: pointer;
-            color: #fff;
-        }
-    }
-}
-
-@media (min-width: 458px) {
-    & {
-        &__Nav {
-            grid-template-columns: repeat(3, 1fr);
+            &:hover {
+                background-color: #4f46e5;
+                cursor: pointer;
+                color: #fff;
+            }
         }
     }
-}
 
-@media (min-width: 1024px) {
-    & {
-        top: 0;
-
-        &__Icon {
-            display: none;
+    @media (min-width: 458px) {
+        & {
+            &__Nav {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
+    }
 
-        &__Nav {
-            clip-path: none !important;
-            max-width: 768px;
-            grid-template-columns: repeat(6, 1fr);
-            position: relative;
-            bottom: 0;
-            justify-content: flex-end;
-            gap: 0;
+    @media (min-width: 1024px) {
+        & {
+            top: 0;
 
-            & .nItem {
-                padding: 0;
-                border: none;
-                flex-direction: row;
-                gap: 5px;
+            &__Icon {
+                display: none;
+            }
 
-                &:hover {
-                    background-color: transparent;
-                    color: #4f46e5;
-                    cursor: pointer;
+            &__Nav {
+                clip-path: none !important;
+                max-width: 768px;
+                grid-template-columns: repeat(6, 1fr);
+                position: relative;
+                bottom: 0;
+                justify-content: flex-end;
+                gap: 0;
+
+                & .nItem {
+                    padding: 0;
+                    border: none;
+                    flex-direction: row;
+                    gap: 5px;
+
+                    &:hover {
+                        background-color: transparent;
+                        color: #4f46e5;
+                        cursor: pointer;
+                    }
                 }
             }
         }

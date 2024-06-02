@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 
-import "./header.css"
+import "./header.scss"
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -27,27 +27,27 @@ const Header = () => {
     }
 
     const navLinks = [
-        { label: "Home", icon: "" },
-        { label: "Projects", icon: "" },
-        { label: "Blog", icon: "" },
-        { label: "Testimonials", icon: "" },
-        { label: "About Us", icon: "" },
-        { label: "Contact Us", icon: "" },
+        { label: "Home", icon: "bx bx-home" },
+        { label: "Projects", icon: "bx bx-briefcase" },
+        { label: "Blog", icon: "bx bs-edit" },
+        { label: "Testimonials", icon: "bx bx-message-square-dots" },
+        { label: "About Us", icon: "bx bx-info-circle" },
+        { label: "Contact Us", icon: "bx bx-envelope" },
     ]
 
     return (
         <div className="header">
             <div className="header__Logo">
-                <img src="" alt="logo" />
+                <span>LOGO</span>
                 <h1>Head</h1>
             </div>
             <div className="header__Icon">
-                <p onClick={() => setIsOpen(isOpen => !isOpen)}>C</p>
+                <i className="bx bx-menu" onClick={() => setIsOpen(isOpen => !isOpen)}></i>
             </div>
             <motion.ul className="header__Nav" animate={isOpen ? "open" : "closed"} variants={navbar} >
                 {navLinks.map((link) => (
                     <li className="nItem" key={link.label} onClick={() => setIsOpen(isOpen => !isOpen)}>
-                        <p className={link.icon}>c</p>
+                        <i className={link.icon}></i>
                         {link.label}
                     </li>
                 ))}
