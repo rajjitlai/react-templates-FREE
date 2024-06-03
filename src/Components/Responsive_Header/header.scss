@@ -5,121 +5,86 @@
 }
 
 body {
-    min-height: 100vh;
-    width: 100%;
-    background: #d7d4d6 !important;
-    color: #000 !important;
-}
-
-img {
-    max-width: 100%;
-}
-
-ul {
-    list-style: none;
+    font-family: Arial, sans-serif;
 }
 
 .header {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    height: 75px;
-    background-color: #fff;
+    align-items: center;
+    padding: 20px;
+    background-color: #282c34;
+    color: white;
+    position: relative;
 
-    &__icon {
-        font-size: 2rem;
-        padding-right: 10px;
-        color: #4f46e5;
+    &__logo {
+        font-size: 1.5rem;
     }
 
-    &__Logo {
-        width: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 10px;
-        padding-left: 10px;
-
-        & img {
-            width: 50px;
-        }
-
-        & h1 {
-            font-size: 1.25rem;
-        }
+    &__toggle {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1001; // Ensure button stays above the menu
     }
 
-    &__Nav {
-        position: absolute;
-        bottom: 75px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        justify-items: stretch;
+    &__nav {
+        position: fixed;
+        top: 0;
+        right: 0;
         width: 100%;
-        padding: 20px 10px;
-        background-color: #fff;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; // Ensure nav stays below the button
 
-        & .nItem {
-            padding: 10px 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #4f46e5;
-            border-radius: 10px;
+        &List {
+            list-style: none;
             text-align: center;
 
-            & i {
-                font-size: 1.25rem;
-            }
+            &Item {
+                margin: 10px 0;
 
-            &:hover {
-                background-color: #4f46e5;
-                cursor: pointer;
-                color: #fff;
-            }
-        }
-    }
-
-    @media (min-width: 458px) {
-        & {
-            &__Nav {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-    }
-
-    @media (min-width: 1024px) {
-        & {
-            top: 0;
-
-            &__Icon {
-                display: none;
-            }
-
-            &__Nav {
-                clip-path: none !important;
-                max-width: 768px;
-                grid-template-columns: repeat(6, 1fr);
-                position: relative;
-                bottom: 0;
-                justify-content: flex-end;
-                gap: 0;
-
-                & .nItem {
-                    padding: 0;
-                    border: none;
-                    flex-direction: row;
-                    gap: 5px;
+                a {
+                    color: white;
+                    text-decoration: none;
+                    font-size: 1.5rem;
+                    transition: color 0.3s ease;
 
                     &:hover {
-                        background-color: transparent;
-                        color: #4f46e5;
-                        cursor: pointer;
+                        color: #61dafb;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        &__toggle {
+            display: none;
+        }
+
+        &__nav {
+            position: static;
+            display: block;
+            background: none;
+            height: auto;
+
+            &List {
+                display: flex;
+                justify-content: flex-end;
+
+                &Item {
+                    margin: 0 15px;
+
+                    a {
+                        font-size: 1rem;
                     }
                 }
             }

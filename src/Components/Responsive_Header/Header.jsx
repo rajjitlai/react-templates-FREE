@@ -1,59 +1,60 @@
-import { useState } from "react"
-import { motion } from "framer-motion"
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import "./header.scss";
 
-import "./header.scss"
+const navVariants = {
+    open: {
+        clipPath: "circle(130% at 90% 10%)",
+        transition: {
+            type: "spring",
+            stiffness: 20,
+            restDelta: 2
+        }
+    },
+    closed: {
+        clipPath: "circle(30px at 90% 10%)",
+        transition: {
+            type: "spring",
+            stiffness: 400,
+            damping: 40
+        }
+    }
+};
+
+const navLinks = [
+    { label: "Home", path: "/" },
+    { label: "Projects", path: "/projects" },
+    { label: "Blog", path: "/blog" },
+    { label: "Testimonials", path: "/testimonials" },
+    { label: "About Us", path: "/about" },
+    { label: "Contact Us", path: "/contact" }
+];
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false)
-
-    const navbar = {
-        open: () => ({
-            clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 0 0)',
-            transition: {
-                type: "spring",
-                stiffness: 200,
-                restDelta: 1,
-            }
-        }),
-        closed: () => ({
-            clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)',
-            transition: {
-                delay: 0.5,
-                type: "spring",
-                stiffness: 400,
-                damping: 40,
-            }
-        })
-    }
-
-    const navLinks = [
-        { label: "Home", icon: "bx bx-home" },
-        { label: "Projects", icon: "bx bx-briefcase" },
-        { label: "Blog", icon: "bx bs-edit" },
-        { label: "Testimonials", icon: "bx bx-message-square-dots" },
-        { label: "About Us", icon: "bx bx-info-circle" },
-        { label: "Contact Us", icon: "bx bx-envelope" },
-    ]
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="header">
-            <div className="header__Logo">
-                <span>LOGO</span>
-                <h1>Head</h1>
-            </div>
-            <div className="header__Icon">
-                <i className="bx bx-menu" onClick={() => setIsOpen(isOpen => !isOpen)}></i>
-            </div>
-            <motion.ul className="header__Nav" animate={isOpen ? "open" : "closed"} variants={navbar} >
-                {navLinks.map((link) => (
-                    <li className="nItem" key={link.label} onClick={() => setIsOpen(isOpen => !isOpen)}>
-                        <i className={link.icon}></i>
-                        {link.label}
-                    </li>
-                ))}
-            </motion.ul>
-        </div>
-    )
-}
+        <header className="header">
+            <div className="header__logo">LOGO</div>
+            <motion.nav
+                initial={false}
+                animate={isOpen ? "open" : "closed"}
+                variants={navVariants}
+                className="header__nav"
+            >
+                <ul className="header__navList">
+                    {navLinks.map((link) => (
+                        <li key={link.label} className="header__navItem">
+                            <a href={link.path}>{link.label}</a>
+                        </li>
+                    ))}
+                </ul>
+            </motion.nav>
+            <button className="header__toggle" onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? "Close" : "Menu"}
+            </button>
+        </header>
+    );
+};
 
-export default Header
+export default Header;
