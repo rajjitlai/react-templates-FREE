@@ -40,7 +40,7 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header__logo">LOGO</div>
-            <div className='header__show'>
+            {/* <div className='header__show'>
                 <ul className="header__navList">
                     {navLinks.map((link) => (
                         <li key={link.label} className="header__navItem">
@@ -48,7 +48,7 @@ const Header = () => {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
             <motion.nav
                 className="header__nav"
                 initial={false}
