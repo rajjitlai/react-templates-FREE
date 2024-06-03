@@ -21,7 +21,7 @@ const Header = () => {
             scale: 1,
             opacity: 1,
             transition: {
-                type: 'spring', 
+                type: 'spring',
                 stiffness: 200,
                 restDelta: 1,
             },
@@ -40,6 +40,15 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header__logo">LOGO</div>
+            <div className='header__show'>
+                <ul className="header__navList">
+                    {navLinks.map((link) => (
+                        <li key={link.label} className="header__navItem">
+                            <a href={link.path}>{link.label}</a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
             <motion.nav
                 className="header__nav"
                 initial={false}
