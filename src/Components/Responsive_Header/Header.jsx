@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './header.scss';
+import menu from "../../assets/menu.svg"
+import close from "../../assets/close.svg"
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +28,7 @@ const Header = () => {
                 </ul>
             </nav>
             <button className="header__toggle" onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? "Close" : "Menu"}
+                {isOpen ? <img src={close} alt="close" style={{ filter: "invert(1)" }} /> : <img src={menu} alt='menu' style={{ filter: "invert(1)" }} />}
             </button>
         </header>
     );
