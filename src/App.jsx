@@ -1,4 +1,4 @@
-import Header from "./Components/Responsive_Header/Header"
+import Header from "./Components/Header_framer-motion/Header"
 import "./global.css"
 
 const App = () => {
