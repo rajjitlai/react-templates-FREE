@@ -18,19 +18,21 @@ const Header = () => {
 
     const navVariants = {
         open: {
-            x: 0,
+            scale: 1,
+            opacity: 1,
             transition: {
-                type: 'spring',
-                stiffness: 300,
-                damping: 30,
+                type: 'spring', 
+                stiffness: 200,
+                restDelta: 1,
             },
         },
         closed: {
-            x: '100%',
+            scale: 0,
+            opacity: 0,
             transition: {
                 type: 'spring',
-                stiffness: 300,
-                damping: 30,
+                stiffness: 400,
+                damping: 40,
             },
         },
     };
