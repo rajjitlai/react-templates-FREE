@@ -1,6 +1,8 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
+import next from "../../assets/next.svg"
+import previous from "../../assets/previous.svg"
 
 const Slides = [
 
@@ -25,7 +27,7 @@ function Carousel({slides}: Props){
                     <img src={slide} alt="" />
                 </SwiperSlide>
             ))}
-            
+
         </Swiper>
     )
 }
