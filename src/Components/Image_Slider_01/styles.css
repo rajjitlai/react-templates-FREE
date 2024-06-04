@@ -5,18 +5,23 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    background-color: #f4f4f9;
+    color: #333;
 }
 
 .carousel-container {
+    max-width: 470px;
+    width: 100%;
+    margin: auto;
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .carousel-button {
@@ -28,6 +33,12 @@ body{
     cursor: pointer;
     padding: 10px;
     color: #fff;
+    z-index: 10;
+    transition: color 0.3s ease;
+}
+
+.carousel-button:hover {
+    color: #61dafb;
 }
 
 .carousel-button.prev {
@@ -40,7 +51,9 @@ body{
 
 .slider img {
     width: 100%;
+    height: auto;
     border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .swiper-pagination-bullet {
