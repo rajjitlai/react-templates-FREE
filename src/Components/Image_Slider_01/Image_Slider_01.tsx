@@ -46,7 +46,7 @@ function Carousel({ slides = images }) {
                     slideShadows: true,
                 }}
                 onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex)}
-                onSwiper={(swiper) => console.log(swiper)}
+                onSwiper={(swiper) => (swiper)}
             >
                 {slides.map((image, index) => (
                     <SwiperSlide key={index} className="slider">
