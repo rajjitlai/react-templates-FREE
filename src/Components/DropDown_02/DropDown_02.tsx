@@ -49,7 +49,7 @@ const DropDown_02 = () => {
     }
 
     return (
-        <>
+        <div className='mainContainer'>
             <div className={`dropdown ${isOpen ? "open":""}`}>
                 <button ref={buttonRef} onClick={handleButtonClick}>
                     <Icon>
@@ -69,7 +69,7 @@ const DropDown_02 = () => {
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
