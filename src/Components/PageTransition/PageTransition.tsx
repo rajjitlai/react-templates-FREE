@@ -7,13 +7,15 @@ const About = () => <main>About</main>
 const Work = () => <main>Work</main>
 
 const Bars = () => {
-    <div id='bars' className='bars'>
-        <div />
-        <div style={{ animationDelay: "0.1s" }} />
-        <div style={{ animationDelay: "0.3s" }} />
-        <div style={{ animationDelay: "0.5s" }} />
-        <div style={{ animationDelay: "0.8s" }} />
-    </div>
+    return (
+        <div id='bars' className='bars'>
+            <div />
+            <div style={{ animationDelay: "0.1s" }} />
+            <div style={{ animationDelay: "0.3s" }} />
+            <div style={{ animationDelay: "0.5s" }} />
+            <div style={{ animationDelay: "0.8s" }} />
+        </div>
+    )
 }
 
 const Link = ({ to, children }) => {
@@ -38,24 +40,26 @@ const Link = ({ to, children }) => {
 }
 
 const Layout = () => {
-    <>
-        <nav>
-            <h1>Portfolio</h1>
-            <ul>
-                <li>
-                    <Link to="/home">Home</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-                <li>
-                    <Link to="/work">Work</Link>
-                </li>
-            </ul>
-        </nav>
-        <Bars />
-        <Outlet />
-    </>
+    return (
+        <>
+            <nav>
+                <h1>Portfolio</h1>
+                <ul>
+                    <li>
+                        <Link to="/home">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                        <Link to="/work">Work</Link>
+                    </li>
+                </ul>
+            </nav>
+            <Bars />
+            <Outlet />
+        </>
+    )
 }
 
 const PageTransition = () => {
