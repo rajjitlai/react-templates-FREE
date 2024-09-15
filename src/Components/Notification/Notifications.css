@@ -1,0 +1,85 @@
+.background {
+    background: #4d4d4d;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notifications__close {
+    cursor: pointer;
+}
+
+.notifications {
+    margin: 0 auto;
+    margin-top: -5rem;
+    border-radius: 1rem;
+    background: #1f1f1f;
+    max-width: 30rem;
+    width: 100%;
+    padding: 1rem;
+    min-height: 30rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.notifications__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.notifications__header h2 {
+    margin-top: 0.75rem;
+}
+
+.notifications h2 {
+    color: #e6e6e8;
+}
+
+.notifications button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    gap: 0.5rem;
+}
+
+.notifications .active {
+    text-decoration: underline;
+    color: #d8d8da;
+}
+
+.notifications button:hover {
+    text-decoration: underline;
+}
+
+.notifications__tabs {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    overflow-x: auto;
+    border-bottom: 1px solid #323235;
+}
+
+.notifications .tab {
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.notification__count {
+    background: #323235;
+    color: #d8d8da;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
+
+.notifications__footer{
+    margin-top: 10%;
+    display: flex;
+    gap: 10px;
+}
+
+.notifications__footer button{
+    padding: 5px;
+}

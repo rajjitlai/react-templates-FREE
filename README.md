@@ -1,6 +1,6 @@
 # React Templates for Everyone
 
-Welcome to the **React Templates for Everyone** repository! This project provides a collection of reusable React components to help developers quickly build beautiful and functional web applications. 
+Welcome to the **React Templates for Everyone** repository! This project provides a collection of reusable React components to help developers quickly build beautiful and functional web applications.
 
 ## Overview
 
@@ -20,11 +20,13 @@ Before you begin, ensure you have met the following requirements:
 To use the components in this repository, follow these steps:
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/rajjitlai/react-templates-FREE.git
    ```
 
 2. **Install the necessary dependencies:**
+
     ```bash
     npm install
     ```
@@ -51,4 +53,3 @@ To contribute, please follow these steps:
 Your Name - [rajjitlai@mail.com](mailto:your-rajjitlai@mail.com)
 
 Project Link: [https://github.com/rajjitlai/react-templates-FREE](https://github.com/rajjitlai/react-templates-FREE)
-
