@@ -38,7 +38,8 @@ const Bars = () => {
 const Link = ({ to, children }) => {
     const navigate = useNavigate()
     
-    const handleClicked = () => {
+    const handleClicked = (e) => {
+        e.preventDefault()
         const bars = document.getElementById("bars")
         if (!bars) return
 
@@ -56,7 +57,19 @@ const Link = ({ to, children }) => {
     }
 
     return (
-        <a onClick={handleClicked} className="page-transition__link">
+        <a 
+            href={to} 
+            onClick={handleClicked} 
+            className="page-transition__link"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    handleClicked(e)
+                }
+            }}
+        >
             {children}
         </a>
     )

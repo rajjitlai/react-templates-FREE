@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules"
+import type { Swiper as SwiperType } from "swiper"
 import next from "../../assets/next.svg"
 import previous from "../../assets/previous.svg"
 import { cat01, cat02, cat03, cat04 } from "../../assets/images/index.ts"
@@ -14,15 +15,14 @@ const images = [cat01, cat02, cat03, cat04]
 
 function Carousel({ slides = images }) {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const swiperRef = useRef<SwiperType>()
 
     const handlePrev = () => {
-        const newSlideIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1
-        setCurrentSlide(newSlideIndex)
+        swiperRef.current?.slidePrev()
     }
 
     const handleNext = () => {
-        const newSlideIndex = (currentSlide + 1) % slides.length
-        setCurrentSlide(newSlideIndex)
+        swiperRef.current?.slideNext()
     }
 
     return (
@@ -38,7 +38,6 @@ function Carousel({ slides = images }) {
                 <Swiper
                     modules={[EffectCoverflow, Navigation, Pagination]}
                     pagination={{ clickable: true }}
-                    navigation={{ nextEl: '.image-slider__button--next', prevEl: '.image-slider__button--prev' }}
                     speed={1000}
                     slidesPerView={1}
                     centeredSlides={true}
@@ -49,6 +48,9 @@ function Carousel({ slides = images }) {
                         depth: 100,
                         modifier: 1,
                         slideShadows: true,
+                    }}
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper
                     }}
                     onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex)}
                     className="image-slider__swiper"
@@ -74,7 +76,7 @@ function Carousel({ slides = images }) {
                     <button
                         key={index}
                         className={`image-slider__indicator ${currentSlide === index ? 'active' : ''}`}
-                        onClick={() => setCurrentSlide(index)}
+                        onClick={() => swiperRef.current?.slideTo(index)}
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}

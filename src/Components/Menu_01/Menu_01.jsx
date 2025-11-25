@@ -12,10 +12,10 @@ const navs = [
             <>
                 <h2>About</h2>
                 <nav>
-                    <a style={{ animationDelay: "0.1s" }}>Profile</a>
-                    <a style={{ animationDelay: "0.2s" }}>Skills</a>
-                    <a style={{ animationDelay: "0.3s" }}>Experience</a>
-                    <a style={{ animationDelay: "0.4s" }}>Education</a>
+                    <a href="#profile" style={{ animationDelay: "0.1s" }}>Profile</a>
+                    <a href="#skills" style={{ animationDelay: "0.2s" }}>Skills</a>
+                    <a href="#experience" style={{ animationDelay: "0.3s" }}>Experience</a>
+                    <a href="#education" style={{ animationDelay: "0.4s" }}>Education</a>
                 </nav>
             </>
         )
@@ -26,9 +26,9 @@ const navs = [
             <>
                 <h2>Projects</h2>
                 <nav>
-                    <a style={{ animationDelay: "0.1s" }}>Web Apps</a>
-                    <a style={{ animationDelay: "0.2s" }}>Mobile Apps</a>
-                    <a style={{ animationDelay: "0.3s" }}>Design Work</a>
+                    <a href="#web-apps" style={{ animationDelay: "0.1s" }}>Web Apps</a>
+                    <a href="#mobile-apps" style={{ animationDelay: "0.2s" }}>Mobile Apps</a>
+                    <a href="#design-work" style={{ animationDelay: "0.3s" }}>Design Work</a>
                 </nav>
             </>
         )
@@ -39,9 +39,9 @@ const navs = [
             <>
                 <h2>Contact</h2>
                 <nav>
-                    <a style={{ animationDelay: "0.1s" }}>Email</a>
-                    <a style={{ animationDelay: "0.2s" }}>LinkedIn</a>
-                    <a style={{ animationDelay: "0.3s" }}>GitHub</a>
+                    <a href="mailto:contact@example.com" style={{ animationDelay: "0.1s" }}>Email</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ animationDelay: "0.2s" }}>LinkedIn</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={{ animationDelay: "0.3s" }}>GitHub</a>
                 </nav>
             </>
         )

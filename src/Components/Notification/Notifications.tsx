@@ -26,6 +26,7 @@ const capitalizeFirstLetter = (string) => {
 
 const Notifications = () => {
     const [notifications, setNotifications] = useState(notificationDefinition)
+    const [isOpen, setIsOpen] = useState(true)
     const notificationsCount = createNotificationsCount(notifications)
     const [currentTab, setCurrentTab] = useState('all')
 
@@ -44,12 +45,18 @@ const Notifications = () => {
         })))
     }
 
+    if (!isOpen) return null
+
     return (
         <div className='notifications-wrapper'>
             <div className="notifications">
                 <div className="notifications__header">
                     <h2>Notifications</h2>
-                    <button className="notifications__close" aria-label="Close notifications">
+                    <button 
+                        className="notifications__close" 
+                        onClick={() => setIsOpen(false)}
+                        aria-label="Close notifications"
+                    >
                         <img src={close} alt="Close" />
                     </button>
                 </div>

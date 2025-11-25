@@ -43,9 +43,21 @@ const Layout = () => {
                     {links.map((link, index) => (
                         <a 
                             key={link} 
+                            href={`/${link}`}
                             className={`menu-02__link ${isMenuOpen ? "appear" : ""}`} 
                             style={{ animationDelay: `${0.1 + index * 0.1}s` }}
-                            onClick={() => onClick(link)}
+                            onClick={(e) => {
+                                e.preventDefault()
+                                onClick(link)
+                            }}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault()
+                                    onClick(link)
+                                }
+                            }}
                         >
                             {link}
                         </a>
