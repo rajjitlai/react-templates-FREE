@@ -1,87 +1,125 @@
-.carousel-container {
-    max-width: 800px;
+.image-slider {
     width: 100%;
-    margin: auto;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
 }
 
-.carousel-button {
+.image-slider__container {
+    position: relative;
+    width: 100%;
+    padding: 60px 0;
+}
+
+.image-slider__swiper {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.image-slider__slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-slider__image-wrapper {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.image-slider__image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.image-slider__button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
     border-radius: 50%;
     cursor: pointer;
-    padding: 12px;
-    width: 48px;
-    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
 }
 
-.carousel-button:hover {
-    background: rgba(0, 0, 0, 0.7);
+.image-slider__button:hover {
+    background: rgba(255, 255, 255, 1);
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-button img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
-    transition: transform 0.2s ease;
-}
-
-.carousel-button:hover img {
-    transform: scale(1.1);
-}
-
-.carousel-button.prev {
+.image-slider__button--prev {
     left: 20px;
 }
 
-.carousel-button.next {
+.image-slider__button--next {
     right: 20px;
 }
 
-.slider {
-    overflow: hidden;
-    border-radius: 16px;
+.image-slider__button img {
+    width: 24px;
+    height: 24px;
 }
 
-.slider img {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    object-fit: cover;
+.image-slider__indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
 }
 
-.slider:hover img {
-    transform: scale(1.05);
+.image-slider__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(102, 126, 234, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
 }
 
-.swiper-pagination-bullet {
-    display: none;
+.image-slider__indicator:hover {
+    background: rgba(102, 126, 234, 0.5);
+    transform: scale(1.2);
 }
 
-.swiper-pagination-bullet-active {
-    display: none;
+.image-slider__indicator.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 32px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
 }
 
-.swiper-slide-active img {
-    transform: scale(1.1);
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+/* Swiper pagination customization */
+.image-slider__swiper :global(.swiper-pagination-bullet) {
+    background: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+    transition: all 0.3s ease;
 }
+
+.image-slider__swiper :global(.swiper-pagination-bullet-active) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 32px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+

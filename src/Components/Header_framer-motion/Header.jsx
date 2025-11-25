@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import './header.scss';
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import './header.css'
 import menu from "../../assets/menu.svg"
 import close from "../../assets/close.svg"
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     const navLinks = [
         { label: "Home", path: "/" },
@@ -14,60 +14,88 @@ const Header = () => {
         { label: "Testimonials", path: "/testimonials" },
         { label: "About Us", path: "/about" },
         { label: "Contact Us", path: "/contact" },
-    ];
+    ]
 
     const navVariants = {
         open: {
-            scale: 1,
-            opacity: 1,
+            x: 0,
             transition: {
                 type: 'spring',
-                stiffness: 200,
-                restDelta: 1,
-            },
+                stiffness: 300,
+                damping: 30
+            }
         },
         closed: {
-            scale: 0,
-            opacity: 0,
+            x: '100%',
             transition: {
                 type: 'spring',
                 stiffness: 400,
-                damping: 40,
-            },
+                damping: 40
+            }
+        }
+    }
+
+    const itemVariants = {
+        open: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 300,
+                damping: 24
+            }
         },
-    };
+        closed: {
+            opacity: 0,
+            y: 20
+        }
+    }
 
     return (
-        <header className="header">
-            <div className="header__logo">LOGO</div>
-            {/* <div className='header__show'>
-                <ul className="header__navList">
-                    {navLinks.map((link) => (
-                        <li key={link.label} className="header__navItem">
-                            <a href={link.path}>{link.label}</a>
-                        </li>
-                    ))}
-                </ul>
-            </div> */}
+        <header className="header-framer">
+            <div className="header-framer__logo">LOGO</div>
             <motion.nav
-                className="header__nav"
+                className="header-framer__nav"
                 initial={false}
                 animate={isOpen ? 'open' : 'closed'}
                 variants={navVariants}
             >
-                <ul className="header__navList">
-                    {navLinks.map((link) => (
-                        <li key={link.label} className="header__navItem">
-                            <a href={link.path}>{link.label}</a>
-                        </li>
-                    ))}
+                <ul className="header-framer__nav-list">
+                    <AnimatePresence>
+                        {navLinks.map((link, index) => (
+                            <motion.li
+                                key={link.label}
+                                className="header-framer__nav-item"
+                                variants={itemVariants}
+                                initial="closed"
+                                animate={isOpen ? 'open' : 'closed'}
+                                transition={{ delay: index * 0.1 }}
+                            >
+                                <a href={link.path} onClick={() => setIsOpen(false)}>
+                                    {link.label}
+                                </a>
+                            </motion.li>
+                        ))}
+                    </AnimatePresence>
                 </ul>
             </motion.nav>
-            <button className="header__toggle" onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? <img src={close} alt="close" style={{ filter: "invert(1)" }} /> : <img src={menu} alt='menu' style={{ filter: "invert(1)" }} />}
+            <button
+                className="header-framer__toggle"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={isOpen}
+            >
+                <motion.img
+                    src={isOpen ? close : menu}
+                    alt={isOpen ? "Close menu" : "Open menu"}
+                    style={{ filter: "invert(1)" }}
+                    animate={{ rotate: isOpen ? 90 : 0 }}
+                    transition={{ duration: 0.3 }}
+                />
             </button>
         </header>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header
+

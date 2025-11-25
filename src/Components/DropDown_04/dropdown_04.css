@@ -1,89 +1,135 @@
-.dropdown {
+.dropdown-04 {
     position: relative;
-    height: 72px;
-    display: grid;
-    place-items: center;
-}
-
-.dropdown>button {
-    background: transparent;
-    border: 0;
-    font-family: inherit;
-    font-size: inherit;
-}
-
-.dropdown:hover>button {
-    color: #6c63ff;
-}
-
-.dropdown:hover .menu {
-    opacity: 1;
-    visibility: visible;
-    transform: scaleY(1);
-}
-
-.links {
-    padding-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 30px;
-    font-size: 14px;
-}
-
-.menu {
-    position: fixed;
-    top: 64px;
-    left: 0;
     width: 100%;
-    height: 170px;
-    background: #ffff;
-    opacity: 0;
-    visibility: hidden;
-    transform: scaleY(0);
-    transform-origin: 50% 0%;
-    box-shadow: 0 40px 60px rgb(0 0 0 / 3%);
-    transition: 0.5s;
+    max-width: 400px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
 }
 
-.menu h2 {
-    font-size: 14px;
-    margin: 0 0 4px;
-    color: #9a99ac;
-    cursor: default;
-}
-
-.menu img {
-    width: 110px;
-    height: 110px;
-    object-fit: contain;
-    background: #f4f4fd;    
-    padding: 10px;
-    margin-top: 2px;
-    margin-left: 10px;
-    border-radius: 50%;
-}
-
-body .swiper-slide{
+.dropdown-04__trigger {
     display: flex;
-    gap: 24px;
-    height: 160px;
-    padding: 0 100px 0 20px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-body .swiper-slide> div{
-    flex: 1 1 auto;
+.dropdown-04__trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
 
-body .swiper-horizontal > .swiper-pagination-bullets{
-    bottom: 12px;
+.dropdown-04__chevron {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-04__chevron.open {
+    transform: rotate(180deg);
+}
+
+.dropdown-04__menu {
+    position: absolute;
+    top: calc(100% + 8px);
     left: 0;
-    text-align: left;
-    padding-left: 164px;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #e0e0e5;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    z-index: 1000;
+    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #6c63ff;
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+.dropdown-04__swiper {
+    width: 100%;
+    height: 280px;
+}
+
+.dropdown-04__slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-04__slide-content {
+    text-align: center;
+    width: 100%;
+}
+
+.dropdown-04__slide-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 16px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.dropdown-04__slide-image img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.dropdown-04__slide-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 20px;
+}
+
+.dropdown-04__slide-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dropdown-04__slide-tag {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Swiper pagination customization */
+.dropdown-04__swiper :global(.swiper-pagination-bullet) {
+    background: #667eea;
+    opacity: 0.3;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+}
+
+.dropdown-04__swiper :global(.swiper-pagination-bullet-active) {
+    opacity: 1;
+    width: 24px;
+    border-radius: 4px;
+}
+

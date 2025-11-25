@@ -2,38 +2,61 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Outlet, useNavigate } from 'react-router-dom'
 import "./transition.css"
 
-const Home = () => <main>Home</main>
-const About = () => <main>About</main>
-const Work = () => <main>Work</main>
+const Home = () => (
+    <main className="page-transition__content">
+        <h1>Home</h1>
+        <p>Welcome to the home page</p>
+    </main>
+)
+
+const About = () => (
+    <main className="page-transition__content">
+        <h1>About</h1>
+        <p>Learn more about us</p>
+    </main>
+)
+
+const Work = () => (
+    <main className="page-transition__content">
+        <h1>Work</h1>
+        <p>Check out our portfolio</p>
+    </main>
+)
 
 const Bars = () => {
     return (
-        <div id='bars' className='bars'>
-            <div />
-            <div style={{ animationDelay: "0.1s" }} />
-            <div style={{ animationDelay: "0.3s" }} />
-            <div style={{ animationDelay: "0.5s" }} />
-            <div style={{ animationDelay: "0.8s" }} />
+        <div id='bars' className='page-transition__bars'>
+            <div className="page-transition__bar"></div>
+            <div className="page-transition__bar" style={{ animationDelay: "0.1s" }}></div>
+            <div className="page-transition__bar" style={{ animationDelay: "0.2s" }}></div>
+            <div className="page-transition__bar" style={{ animationDelay: "0.3s" }}></div>
+            <div className="page-transition__bar" style={{ animationDelay: "0.4s" }}></div>
         </div>
     )
 }
 
 const Link = ({ to, children }) => {
     const navigate = useNavigate()
+    
     const handleClicked = () => {
         const bars = document.getElementById("bars")
+        if (!bars) return
 
-        bars?.classList.add("show")
+        bars.classList.add("show")
 
         setTimeout(() => {
-            bars?.classList.remove("show")
-            bars?.classList.add("hide")
+            bars.classList.remove("show")
+            bars.classList.add("hide")
             navigate(to)
+            
+            setTimeout(() => {
+                bars.classList.remove("hide")
+            }, 300)
         }, 800)
     }
 
     return (
-        <a onClick={handleClicked}>
+        <a onClick={handleClicked} className="page-transition__link">
             {children}
         </a>
     )
@@ -42,9 +65,9 @@ const Link = ({ to, children }) => {
 const Layout = () => {
     return (
         <>
-            <nav>
-                <h1>Portfolio</h1>
-                <ul>
+            <nav className="page-transition__nav">
+                <h1 className="page-transition__logo">Portfolio</h1>
+                <ul className="page-transition__nav-list">
                     <li>
                         <Link to="/home">Home</Link>
                     </li>
@@ -67,6 +90,7 @@ const PageTransition = () => {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Layout />}>
+                    <Route index element={<Home />} />
                     <Route path='home' element={<Home />} />
                     <Route path='about' element={<About />} />
                     <Route path='work' element={<Work />} />

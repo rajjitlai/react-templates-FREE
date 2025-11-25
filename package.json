@@ -1,8 +1,34 @@
 {
-  "name": "react-templates",
-  "private": true,
-  "version": "0.0.0",
+  "name": "react-templates-free",
+  "version": "1.0.0",
+  "description": "A beautiful collection of free, reusable React components for building modern web applications",
   "type": "module",
+  "author": {
+    "name": "Rajjit Laishram",
+    "url": "https://rjsblog.in"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajjitlai/react-templates-FREE.git"
+  },
+  "homepage": "https://reactcomponents.rjsblog.in",
+  "keywords": [
+    "react",
+    "react-components",
+    "ui-components",
+    "free-components",
+    "react-templates",
+    "dropdown",
+    "header",
+    "menu",
+    "slider",
+    "notifications",
+    "ui-library",
+    "components-library",
+    "frontend",
+    "web-development"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

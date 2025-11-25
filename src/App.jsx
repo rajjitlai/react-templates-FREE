@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react"
 import "./global.css"
+import SiteFooter from "./Components/SiteFooter/SiteFooter"
+import { siteConfig } from "./config/site.config"
 
 // Import all components
 import { DropDown_01 } from "./Components/DropDown_01/DropDown_01"
@@ -19,105 +21,107 @@ const App = () => {
   const [selectedComponent, setSelectedComponent] = useState("dropdown-01")
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [categoriesSidebarOpen, setCategoriesSidebarOpen] = useState(true)
+  const [componentsSidebarOpen, setComponentsSidebarOpen] = useState(true)
   const [showDescription, setShowDescription] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const components = [
-    { 
-      id: "dropdown-01", 
-      name: "Dropdown 01", 
+    {
+      id: "dropdown-01",
+      name: "Dropdown 01",
       category: "dropdown",
       description: "Simple account dropdown with profile menu and click-outside-to-close functionality",
       icon: "🔽",
-      component: <DropDown_01 /> 
+      component: <DropDown_01 />
     },
-    { 
-      id: "dropdown-02", 
-      name: "Dropdown 02", 
+    {
+      id: "dropdown-02",
+      name: "Dropdown 02",
       category: "dropdown",
       description: "Animated dropdown with icon support and dynamic positioning",
       icon: "🔽",
-      component: <DropDown_02 /> 
+      component: <DropDown_02 />
     },
-    { 
-      id: "dropdown-03", 
-      name: "Dropdown 03 (Search)", 
+    {
+      id: "dropdown-03",
+      name: "Dropdown 03 (Search)",
       category: "dropdown",
       description: "Search-based dropdown with real-time filtering capabilities",
       icon: "🔍",
-      component: <DropDown_03 /> 
+      component: <DropDown_03 />
     },
-    { 
-      id: "dropdown-04", 
-      name: "Dropdown 04 (Swiper)", 
+    {
+      id: "dropdown-04",
+      name: "Dropdown 04 (Swiper)",
       category: "dropdown",
       description: "Swiper-powered dropdown with pagination and slide navigation",
       icon: "📄",
-      component: <DropDown_04 /> 
+      component: <DropDown_04 />
     },
-    { 
-      id: "dropdown-05", 
-      name: "Dropdown 05 (Nested)", 
+    {
+      id: "dropdown-05",
+      name: "Dropdown 05 (Nested)",
       category: "dropdown",
       description: "Nested menu dropdown with sub-items and smooth transitions",
       icon: "📂",
-      component: <DropDown_05 /> 
+      component: <DropDown_05 />
     },
-    { 
-      id: "header-normal", 
-      name: "Header (Normal)", 
+    {
+      id: "header-normal",
+      name: "Header (Normal)",
       category: "header",
       description: "Standard responsive header with mobile hamburger menu",
       icon: "📋",
-      component: <HeaderNormal /> 
+      component: <HeaderNormal />
     },
-    { 
-      id: "header-framer", 
-      name: "Header (Framer Motion)", 
+    {
+      id: "header-framer",
+      name: "Header (Framer Motion)",
       category: "header",
       description: "Animated header with smooth transitions using Framer Motion",
       icon: "✨",
-      component: <HeaderFramerMotion /> 
+      component: <HeaderFramerMotion />
     },
-    { 
-      id: "image-slider", 
-      name: "Image Slider", 
+    {
+      id: "image-slider",
+      name: "Image Slider",
       category: "slider",
       description: "Beautiful coverflow image carousel with navigation controls",
       icon: "🖼️",
-      component: <Carousel /> 
+      component: <Carousel />
     },
-    { 
-      id: "menu-01", 
-      name: "Menu 01 (Swiper)", 
+    {
+      id: "menu-01",
+      name: "Menu 01 (Swiper)",
       category: "menu",
       description: "Swiper-based navigation menu with slide transitions",
       icon: "☰",
-      component: <Menu_01 /> 
+      component: <Menu_01 />
     },
-    { 
-      id: "menu-02", 
-      name: "Menu 02 (Router)", 
+    {
+      id: "menu-02",
+      name: "Menu 02 (Router)",
       category: "menu",
       description: "Router-integrated menu with page transitions and navigation",
       icon: "🧭",
-      component: <Menu_02 /> 
+      component: <Menu_02 />
     },
-    { 
-      id: "notifications", 
-      name: "Notifications", 
+    {
+      id: "notifications",
+      name: "Notifications",
       category: "other",
       description: "Tabbed notification system with filtering and read/unread states",
       icon: "🔔",
-      component: <Notifications /> 
+      component: <Notifications />
     },
-    { 
-      id: "page-transition", 
-      name: "Page Transition", 
+    {
+      id: "page-transition",
+      name: "Page Transition",
       category: "other",
       description: "Smooth page transitions with loading bars and router integration",
       icon: "⚡",
-      component: <PageTransition /> 
+      component: <PageTransition />
     },
   ]
 
@@ -133,7 +137,7 @@ const App = () => {
   const filteredComponents = useMemo(() => {
     return components.filter(comp => {
       const matchesSearch = comp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           comp.description.toLowerCase().includes(searchQuery.toLowerCase())
+        comp.description.toLowerCase().includes(searchQuery.toLowerCase())
       const matchesCategory = selectedCategory === "all" || comp.category === selectedCategory
       return matchesSearch && matchesCategory
     })
@@ -143,70 +147,163 @@ const App = () => {
 
   return (
     <div className="app-wrapper">
-      {/* Top Bar with Categories */}
-      <div className="top-bar">
-        <div className="top-bar-left">
-          <div className="logo">
-            <div className="logo-icon">⚡</div>
-            <div className="logo-text">
-              <span className="logo-title">React Components</span>
-            </div>
+      {/* Merged Header with Navigation and Categories */}
+      <div className="merged-header">
+        <div className="merged-header__top">
+          <div className="merged-header__left">
+            <a href={siteConfig.mainSite.url} className="merged-header__logo">
+              <span className="merged-header__logo-text">{siteConfig.mainSite.name}</span>
+              <span className="merged-header__logo-divider">/</span>
+              <span className="merged-header__logo-subdomain">{siteConfig.subdomain.shortName}</span>
+            </a>
           </div>
-        </div>
-        
-        <div className="top-bar-center">
-          <div className="categories-nav">
-            {categories.map(category => {
-              const count = category.id === "all" 
-                ? components.length 
-                : components.filter(c => c.category === category.id).length
-              return (
-                <button
-                  key={category.id}
-                  className={`category-nav-btn ${selectedCategory === category.id ? "active" : ""}`}
-                  onClick={() => setSelectedCategory(category.id)}
-                >
-                  <span className="category-nav-icon">{category.icon}</span>
-                  <span className="category-nav-label">{category.name}</span>
-                  <span className="category-nav-count">{count}</span>
-                </button>
-              )
-            })}
-          </div>
+
+          {/* Mobile Menu Backdrop */}
+          {mobileMenuOpen && (
+            <div 
+              className="merged-header__backdrop"
+              onClick={() => setMobileMenuOpen(false)}
+            ></div>
+          )}
+
+          {/* Mobile Menu - Full Screen Overlay */}
+          <nav className={`merged-header__nav ${mobileMenuOpen ? 'open' : ''}`}>
+            {/* Close button inside menu */}
+            {mobileMenuOpen && (
+              <button
+                className="merged-header__nav-close"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            )}
+            <ul className="merged-header__nav-list">
+              {siteConfig.navigation.mainSite.map((link) => (
+                <li key={link.label} className="merged-header__nav-item">
+                  <a
+                    href={link.url}
+                    className="merged-header__nav-link"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            className="merged-header__mobile-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
 
-        <div className="top-bar-right">
-          <a 
-            href="https://github.com/rajjitlai/react-templates-FREE" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="github-button"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            <span>GitHub</span>
-          </a>
-        </div>
       </div>
 
       <div className="app-layout">
-        {/* Left Sidebar - Components */}
-        <aside className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
-          <div className="sidebar-inner">
-            <div className="sidebar-header">
-              <button 
-                className="sidebar-toggle"
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                aria-label="Toggle sidebar"
+        {/* Left Sidebar - Categories */}
+        <aside className={`categories-sidebar ${categoriesSidebarOpen ? "open" : "closed"}`}>
+          <div className="categories-sidebar-inner">
+            <div className="categories-sidebar-header">
+              <h2 className="categories-sidebar-title">Categories</h2>
+              <button
+                className="categories-sidebar-toggle"
+                onClick={() => setCategoriesSidebarOpen(!categoriesSidebarOpen)}
+                aria-label="Toggle categories sidebar"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
+                {categoriesSidebarOpen ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                )}
               </button>
-              <h2 className="sidebar-title">Components</h2>
+            </div>
+
+            <div className="categories-list">
+              {categories.map(category => {
+                const count = category.id === "all"
+                  ? components.length
+                  : components.filter(c => c.category === category.id).length
+                return (
+                  <button
+                    key={category.id}
+                    className={`category-item ${selectedCategory === category.id ? "active" : ""}`}
+                    onClick={() => setSelectedCategory(category.id)}
+                  >
+                    <span className="category-icon">{category.icon}</span>
+                    <div className="category-info">
+                      <span className="category-name">{category.name}</span>
+                      <span className="category-count">{count}</span>
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+
+            <div className="categories-sidebar-footer">
+              <a
+                href={siteConfig.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-link-button"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        {/* Floating Toggle Button for Categories - Shows when closed */}
+        {!categoriesSidebarOpen && (
+          <button
+            className="categories-sidebar-floating-toggle"
+            onClick={() => setCategoriesSidebarOpen(true)}
+            aria-label="Open categories sidebar"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        )}
+
+        {/* Right Sidebar - Components */}
+        <aside className={`components-sidebar ${componentsSidebarOpen ? "open" : "closed"}`}>
+          <div className="components-sidebar-inner">
+            <div className="components-sidebar-header">
+              <h2 className="components-sidebar-title">Components</h2>
+              <button
+                className="components-sidebar-toggle"
+                onClick={() => setComponentsSidebarOpen(!componentsSidebarOpen)}
+                aria-label="Toggle components sidebar"
+              >
+                {componentsSidebarOpen ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                )}
+              </button>
             </div>
 
             {/* Search */}
@@ -224,7 +321,7 @@ const App = () => {
                   className="search-input"
                 />
                 {searchQuery && (
-                  <button 
+                  <button
                     className="search-clear-btn"
                     onClick={() => setSearchQuery("")}
                     aria-label="Clear"
@@ -274,8 +371,21 @@ const App = () => {
           </div>
         </aside>
 
+        {/* Floating Toggle Button for Components - Shows when closed */}
+        {!componentsSidebarOpen && (
+          <button
+            className="components-sidebar-floating-toggle"
+            onClick={() => setComponentsSidebarOpen(true)}
+            aria-label="Open components sidebar"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+        )}
+
         {/* Main Content - Playground */}
-        <main className={`main-content ${sidebarOpen ? "" : "full-width"}`}>
+        <main className={`main-content ${!categoriesSidebarOpen && !componentsSidebarOpen ? "full-width" : categoriesSidebarOpen && componentsSidebarOpen ? "both-open" : categoriesSidebarOpen ? "left-open" : "right-open"}`}>
           <div className="playground-area">
             {currentComponent ? (
               <div className="preview-frame">
@@ -294,7 +404,7 @@ const App = () => {
 
           {/* Description Button - Bottom Right */}
           {currentComponent && (
-            <button 
+            <button
               className="description-btn"
               onClick={() => setShowDescription(!showDescription)}
             >
@@ -307,7 +417,7 @@ const App = () => {
             <div className="description-panel">
               <div className="description-header">
                 <h3>{currentComponent.name}</h3>
-                <button 
+                <button
                   className="description-close"
                   onClick={() => setShowDescription(false)}
                 >
@@ -332,6 +442,7 @@ const App = () => {
           )}
         </main>
       </div>
+      <SiteFooter />
     </div>
   )
 }

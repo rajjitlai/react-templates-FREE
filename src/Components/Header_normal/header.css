@@ -1,0 +1,119 @@
+.header-normal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+}
+
+.header-normal__logo {
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-normal__nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-normal__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-normal__nav-item a {
+    color: #1a1a2e;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.header-normal__nav-item a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s ease;
+}
+
+.header-normal__nav-item a:hover {
+    color: #667eea;
+}
+
+.header-normal__nav-item a:hover::after {
+    width: 100%;
+}
+
+.header-normal__toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.header-normal__toggle img {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .header-normal__toggle {
+        display: flex;
+    }
+
+    .header-normal__nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #ffffff;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        padding: 80px 24px 24px;
+    }
+
+    .header-normal__nav.open {
+        right: 0;
+    }
+
+    .header-normal__nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .header-normal__nav-item {
+        width: 100%;
+    }
+
+    .header-normal__nav-item a {
+        display: block;
+        padding: 12px 0;
+        font-size: 16px;
+    }
+}
+

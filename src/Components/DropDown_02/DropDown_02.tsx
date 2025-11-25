@@ -1,71 +1,72 @@
-import React, {
-    FC, ReactNode, RefObject, useRef, useState
-} from 'react'
-
+import React, { useRef, useState } from 'react'
 import "./dropdown_02.css"
-
 import account from "../../assets/account.png"
 import down from "../../assets/down.svg"
 import moon from "../../assets/moon.svg"
 
-type IconProps = {
-    children: ReactNode;
-    className?: string;
-    iconRef?: RefObject<HTMLSpanElement>;
-}
-
-const Icon: FC<IconProps> = ({
-    children,
-    iconRef, className
-}) => (
-    <span ref={iconRef} className={`${className!} materials-symbols-outlined`}>
-        {children}
-    </span>
-)
-
 const DropDown_02 = () => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    const chevronRef = useRef<HTMLSpanElement>(null);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [menuTop, setMenuTop] = useState<string>();
-    const [menuRight, setMenuRight] = useState<string>();
+    const buttonRef = useRef<HTMLButtonElement>(null)
+    const chevronRef = useRef<HTMLDivElement>(null)
+    const [isOpen, setIsOpen] = useState(false)
+    const [menuPosition, setMenuPosition] = useState({ top: '78px', right: '0px' })
 
     const handleButtonClick = () => {
-        const buttonRect = buttonRef?.current?.getBoundingClientRect();
+        if (buttonRef.current && chevronRef.current) {
+            const buttonRect = buttonRef.current.getBoundingClientRect()
+            const chevronRect = chevronRef.current.getBoundingClientRect()
 
-        const chevronRect = chevronRef?.current?.getBoundingClientRect();
-
-        if (buttonRect && chevronRect && isOpen) {
-            const menuRight = buttonRect.right - chevronRect.right;
-            const menuTop = chevronRect.top - buttonRect.top;
-            setMenuRight(`${menuRight}px`);
-            setMenuTop(`${menuTop}px`);
-        } else {
-            setMenuRight("0px");
-            setMenuTop("78px");
+            if (isOpen) {
+                const menuRight = buttonRect.right - chevronRect.right
+                const menuTop = chevronRect.top - buttonRect.top
+                setMenuPosition({
+                    right: `${menuRight}px`,
+                    top: `${menuTop}px`
+                })
+            } else {
+                setMenuPosition({ top: '78px', right: '0px' })
+            }
         }
-
-        setIsOpen(!isOpen);
+        setIsOpen(!isOpen)
     }
 
     return (
-        <div className='mainContainer'>
-            <div className={`dropdown ${isOpen ? "open":""}`}>
-                <button ref={buttonRef} onClick={handleButtonClick}>
-                    <Icon>
-                        <img src={account} alt='account' style={{width: 50}} />
-                    </Icon>
-                    <span>Preferences</span>
-                    <Icon iconRef={chevronRef} className="chevron">
-                            {isOpen ? <img src={down} />:<img src={down}/>}
-                    </Icon>
+        <div className="dropdown-02">
+            <div className={`dropdown-02__container ${isOpen ? "open" : ""}`}>
+                <button 
+                    ref={buttonRef} 
+                    className="dropdown-02__trigger"
+                    onClick={handleButtonClick}
+                    aria-expanded={isOpen}
+                >
+                    <div className="dropdown-02__icon">
+                        <img src={account} alt="Account" />
+                    </div>
+                    <span className="dropdown-02__label">Preferences</span>
+                    <div ref={chevronRef} className={`dropdown-02__chevron ${isOpen ? "open" : ""}`}>
+                        <img src={down} alt="" />
+                    </div>
                 </button>
-                <div className={`menu ${isOpen ? "open" : ""}`} style={{right: menuRight, top: menuTop}}>
-                    <button>
-                        <Icon>
-                            <img src={moon} alt='moon' style={{width: 30}} />
-                        </Icon>
+                <div 
+                    className={`dropdown-02__menu ${isOpen ? "open" : ""}`}
+                    style={{ right: menuPosition.right, top: menuPosition.top }}
+                >
+                    <button className="dropdown-02__menu-item">
+                        <div className="dropdown-02__menu-icon">
+                            <img src={moon} alt="Dark Mode" />
+                        </div>
                         <span>Dark Mode</span>
+                    </button>
+                    <button className="dropdown-02__menu-item">
+                        <div className="dropdown-02__menu-icon">
+                            <img src={account} alt="Account" />
+                        </div>
+                        <span>Account Settings</span>
+                    </button>
+                    <button className="dropdown-02__menu-item">
+                        <div className="dropdown-02__menu-icon">
+                            <img src={moon} alt="Notifications" />
+                        </div>
+                        <span>Notifications</span>
                     </button>
                 </div>
             </div>

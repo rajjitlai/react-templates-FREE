@@ -1,11 +1,8 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import "swiper/css"
 import "swiper/css/navigation"
-
 import { useState } from 'react'
-
 import "./menu_01.css"
 
 const navs = [
@@ -15,9 +12,36 @@ const navs = [
             <>
                 <h2>About</h2>
                 <nav>
-                    <a style={{ animationDelay: "0.8s" }}>Profile</a>
-                    <a style={{ animationDelay: "0.9s" }}>Skills</a>
-                    <a style={{ animationDelay: "1" }}>Experience</a>
+                    <a style={{ animationDelay: "0.1s" }}>Profile</a>
+                    <a style={{ animationDelay: "0.2s" }}>Skills</a>
+                    <a style={{ animationDelay: "0.3s" }}>Experience</a>
+                    <a style={{ animationDelay: "0.4s" }}>Education</a>
+                </nav>
+            </>
+        )
+    },
+    {
+        id: 'projects',
+        content: (
+            <>
+                <h2>Projects</h2>
+                <nav>
+                    <a style={{ animationDelay: "0.1s" }}>Web Apps</a>
+                    <a style={{ animationDelay: "0.2s" }}>Mobile Apps</a>
+                    <a style={{ animationDelay: "0.3s" }}>Design Work</a>
+                </nav>
+            </>
+        )
+    },
+    {
+        id: 'contact',
+        content: (
+            <>
+                <h2>Contact</h2>
+                <nav>
+                    <a style={{ animationDelay: "0.1s" }}>Email</a>
+                    <a style={{ animationDelay: "0.2s" }}>LinkedIn</a>
+                    <a style={{ animationDelay: "0.3s" }}>GitHub</a>
                 </nav>
             </>
         )
@@ -31,17 +55,31 @@ const Menu_01 = () => {
         setIsOpen(!isOpen)
     }
 
-    const openClass = isOpen ? 'open' : '';
-
     return (
         <>
-            <div className={`background ${openClass}`}></div>
-            <button className={`burger ${openClass}`} onClick={toggleMenu}>
+            <div 
+                className={`menu-01__background ${isOpen ? 'open' : ''}`}
+                onClick={toggleMenu}
+            ></div>
+            <button 
+                className={`menu-01__burger ${isOpen ? 'open' : ''}`} 
+                onClick={toggleMenu}
+                aria-label="Toggle menu"
+                aria-expanded={isOpen}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div className={`menu ${openClass}`}>
-                <Swiper speed={750} modules={[Navigation]} navigation>
+            <div className={`menu-01__menu ${isOpen ? 'open' : ''}`}>
+                <Swiper 
+                    speed={750} 
+                    modules={[Navigation]} 
+                    navigation
+                    className="menu-01__swiper"
+                >
                     {navs.map(nav => (
-                        <SwiperSlide key={nav.id}>
+                        <SwiperSlide key={nav.id} className="menu-01__slide">
                             {nav.content}
                         </SwiperSlide>
                     ))}
@@ -52,3 +90,4 @@ const Menu_01 = () => {
 }
 
 export default Menu_01
+

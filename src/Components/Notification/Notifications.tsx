@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import notificationDefinition from './notificationDefinition'
 import close from "../../assets/close.svg"
 import Notification from './Notification'
@@ -6,15 +6,16 @@ import "./Notifications.css"
 
 const tabs = ['all', 'following', 'liked', 'commented']
 
-const createNotificationsCount = (notificationDefinition) => {
-    return notificationDefinition.reduce(
+const createNotificationsCount = (notifications) => {
+    return notifications.reduce(
         (acc, notification) => {
-            acc['all']++;
-            acc[notification.notificationType]++;
-            return acc;
-        }, tabs.reduce((acc, tab) => {
-            acc[tab] = 0;
-            return acc;
+            acc['all']++
+            acc[notification.notificationType]++
+            return acc
+        }, 
+        tabs.reduce((acc, tab) => {
+            acc[tab] = 0
+            return acc
         }, {})
     )
 }
@@ -24,56 +25,64 @@ const capitalizeFirstLetter = (string) => {
 }
 
 const Notifications = () => {
-    const [notifications, setNotifications] = React.useState(
-        notificationDefinition
-    )
+    const [notifications, setNotifications] = useState(notificationDefinition)
     const notificationsCount = createNotificationsCount(notifications)
-    const [currentTab, setCurrentTab] = React.useState('all')
+    const [currentTab, setCurrentTab] = useState('all')
+
+    const filteredNotifications = notifications.filter((notification) => {
+        if (currentTab === 'all') {
+            return true
+        } else {
+            return notification.notificationType === currentTab
+        }
+    })
+
+    const handleMarkAllAsRead = () => {
+        setNotifications(notifications.map(notification => ({
+            ...notification,
+            read: true
+        })))
+    }
 
     return (
-        <div className='background'>
+        <div className='notifications-wrapper'>
             <div className="notifications">
                 <div className="notifications__header">
                     <h2>Notifications</h2>
-                    <img src={close} alt="x" className='notifications__close' />
+                    <button className="notifications__close" aria-label="Close notifications">
+                        <img src={close} alt="Close" />
+                    </button>
                 </div>
                 <div className="notifications__tabs">
-                    {
-                        tabs.map(tab =>
-                            <div key={tab} className='tab'>
-                                <button className={currentTab === tab ? 'active' : ''} onClick={() => setCurrentTab(tab)}>
-                                    {capitalizeFirstLetter(tab)}
-                                </button>
-                                <span className="notification__count">
-                                    {notificationsCount[tab]}
-                                </span>
-                            </div>
-                        )
-                    }
+                    {tabs.map(tab => (
+                        <button
+                            key={tab}
+                            className={`notifications__tab ${currentTab === tab ? 'active' : ''}`}
+                            onClick={() => setCurrentTab(tab)}
+                        >
+                            <span>{capitalizeFirstLetter(tab)}</span>
+                            <span className="notifications__count">
+                                {notificationsCount[tab]}
+                            </span>
+                        </button>
+                    ))}
                 </div>
                 <div className="notifications__content">
-                    {
-                        notifications.filter((notification) => {
-                            if (currentTab === 'all') {
-                                return true
-                            } else {
-                                return notification.notificationType === currentTab
-                            }
-                        }).map((notification, index) =>
+                    {filteredNotifications.length > 0 ? (
+                        filteredNotifications.map((notification, index) => (
                             <Notification key={index} notification={notification} />
-                        )
-                    }
+                        ))
+                    ) : (
+                        <div className="notifications__empty">
+                            <p>No notifications found</p>
+                        </div>
+                    )}
                 </div>
                 <div className='notifications__footer'>
-                    <button className='secondary' onClick={() => {
-                        setNotifications(notifications.map(notification => {
-                            notification.read = true;
-                            return notification
-                        }))
-                    }}>
+                    <button className='notifications__button notifications__button--secondary' onClick={handleMarkAllAsRead}>
                         Mark all as read
                     </button>
-                    <button className='primary'>
+                    <button className='notifications__button notifications__button--primary'>
                         View all notifications
                     </button>
                 </div>
@@ -83,3 +92,4 @@ const Notifications = () => {
 }
 
 export default Notifications
+

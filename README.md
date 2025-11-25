@@ -4,7 +4,8 @@ A beautiful collection of **free, reusable React components** to help developers
 
 ![React](https://img.shields.io/badge/React-18.2.0-blue)
 ![Vite](https://img.shields.io/badge/Vite-6.4.1-purple)
-![License](https://img.shields.io/badge/License-Free-green)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
 
 ## ✨ Features
 
@@ -178,13 +179,17 @@ To contribute:
 
 ## 📄 License
 
-This project is free to use for personal and commercial projects.
+This project is licensed under the MIT License - see the [LICENSE](License) file for details.
 
-## 👤 Contact
+Copyright (c) 2024 Rajjit Laishram and RJ's Blog.
 
-**Rajjit Lai** - [rajjitlai@mail.com](mailto:rajjitlai@mail.com)
+## 👤 Author
 
-Project Link: [https://github.com/rajjitlai/react-templates-FREE](https://github.com/rajjitlai/react-templates-FREE)
+**Rajjit Laishram** - [RJ's Blog](https://rjsblog.in)
+
+- Website: [https://rjsblog.in](https://rjsblog.in)
+- Project Link: [https://github.com/rajjitlai/react-templates-FREE](https://github.com/rajjitlai/react-templates-FREE)
+- Live Demo: [https://reactcomponents.rjsblog.in](https://reactcomponents.rjsblog.in)
 
 ## 🙏 Acknowledgments
 
