@@ -139,6 +139,36 @@ rjsblog_free_react-components/
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
+## 🚀 Deployment
+
+### Deploying to Vercel
+
+This project is configured for easy deployment on Vercel:
+
+1. **Push your code to GitHub**
+2. **Import your repository to Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "New Project"
+   - Import your GitHub repository
+3. **Vercel will automatically:**
+   - Detect the Vite build configuration
+   - Use the `vercel.json` configuration for routing
+   - Handle SPA routing and 404 errors automatically
+
+The `vercel.json` file includes:
+- ✅ SPA routing configuration (all routes redirect to `index.html`)
+- ✅ 404 error handling
+- ✅ Security headers (XSS protection, frame options, etc.)
+- ✅ Optimized caching for static assets
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The production build will be in the `dist` directory, ready to deploy to any static hosting service.
+
 ## 🎨 Customization
 
 All components are designed to be easily customizable:
