@@ -1,85 +1,87 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    box-sizing: border-box;
-}
-
-body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f9;
-    color: #333;
-}
-
 .carousel-container {
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
     margin: auto;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px 20px;
 }
 
 .carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: none;
-    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
     cursor: pointer;
-    padding: 10px;
-    color: #fff;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 10;
-    transition: color 0.3s ease;
-}
-
-.carousel-button img{
-    width: 30px;
-    height: 30px;
-    filter: invert(1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-button:hover {
-    color: #61dafb;
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-button img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.2s ease;
+}
+
+.carousel-button:hover img {
+    transform: scale(1.1);
 }
 
 .carousel-button.prev {
-    left: 10px;
+    left: 20px;
 }
 
 .carousel-button.next {
-    right: 10px;
+    right: 20px;
+}
+
+.slider {
+    overflow: hidden;
+    border-radius: 16px;
 }
 
 .slider img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
 }
 
 .slider:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .swiper-pagination-bullet {
     display: none;
-    background: #ccc; 
-    /* you can remove the display: none to see the pagination */
 }
 
 .swiper-pagination-bullet-active {
     display: none;
-    background: #000;
-    /* you can remove the display: none to see the pagination */
 }
 
 .swiper-slide-active img {
-    transform: scale(1.2);
-    transition: transform 0.5s ease;
+    transform: scale(1.1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }

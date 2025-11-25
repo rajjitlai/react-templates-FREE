@@ -63,15 +63,17 @@ const Layout = () => {
 }
 
 const PageTransition = () => {
-    <BrowserRouter>
-        <Routes>
-            <Route path='/' element={<Layout />}>
-                <Route path='home' element={<Home />} />
-                <Route path='about' element={<About />} />
-                <Route path='work' element={<Work />} />
-            </Route>
-        </Routes>
-    </BrowserRouter>
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Layout />}>
+                    <Route path='home' element={<Home />} />
+                    <Route path='about' element={<About />} />
+                    <Route path='work' element={<Work />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default PageTransition

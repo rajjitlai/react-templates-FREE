@@ -58,7 +58,7 @@ const Page = ({ title, content }) => {
 }
 
 const About = () => {
-    <Page title="About" content={`ABout me`} />
+    return <Page title="About" content={`About me`} />
 }
 
 const Menu_02 = () => {

@@ -40,8 +40,8 @@ const Notifications = () => {
                 <div className="notifications__tabs">
                     {
                         tabs.map(tab =>
-                            <div className='tab'>
-                                <button key={tab} className={currentTab === tab ? 'active' : ''} onClick={() => setCurrentTab(tab)}>
+                            <div key={tab} className='tab'>
+                                <button className={currentTab === tab ? 'active' : ''} onClick={() => setCurrentTab(tab)}>
                                     {capitalizeFirstLetter(tab)}
                                 </button>
                                 <span className="notification__count">

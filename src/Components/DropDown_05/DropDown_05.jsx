@@ -23,9 +23,9 @@ const MenuButton = ({
 }) => {
     return (
         <button onClick={() => onClick ? onClick(index, subMenuHeight) : null}>
-            <span>{icon || name}</span>
+            <span>{icon ? <img src={icon} alt="icon" /> : name}</span>
             {name}
-            {hasSubItems && <span>{chevron_right}</span>}
+            {hasSubItems && <span><img src={chevron_right} alt="chevron" /></span>}
         </button>
     )
 }
