@@ -57,7 +57,7 @@ export const siteConfig = {
   
   // Social links
   social: {
-    github: "https://github.com/rajjitlai/react-templates-FREE",
+    github: "https://github.com/rajjitlai/rjsblog_free_react-components",
     twitter: "", // Add if available
     linkedin: "" // Add if available
   }

@@ -1,4 +1,4 @@
-# 🎨 React Templates Collection
+# 🎨 RJ's Blog Free React Components
 
 A beautiful collection of **free, reusable React components** to help developers quickly build modern and functional web applications. All components are production-ready, customizable, and easy to integrate.
 
@@ -50,12 +50,12 @@ A beautiful collection of **free, reusable React components** to help developers
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/rajjitlai/react-templates-FREE.git
+   git clone https://github.com/rajjitlai/rjsblog_free_react-components.git
    ```
 
 2. **Navigate to the project directory:**
    ```bash
-   cd react-templates-FREE
+   cd rjsblog_free_react-components
    ```
 
 3. **Install dependencies:**
@@ -114,7 +114,7 @@ function MyApp() {
 ## 🗂️ Project Structure
 
 ```
-react-templates-FREE/
+rjsblog_free_react-components/
 ├── src/
 │   ├── Components/          # All reusable components
 │   │   ├── DropDown_01/     # Component folder
@@ -188,7 +188,7 @@ Copyright (c) 2024 Rajjit Laishram and RJ's Blog.
 **Rajjit Laishram** - [RJ's Blog](https://rjsblog.in)
 
 - Website: [https://rjsblog.in](https://rjsblog.in)
-- Project Link: [https://github.com/rajjitlai/react-templates-FREE](https://github.com/rajjitlai/react-templates-FREE)
+- Project Link: [https://github.com/rajjitlai/rjsblog_free_react-components](https://github.com/rajjitlai/rjsblog_free_react-components)
 - Live Demo: [https://reactcomponents.rjsblog.in](https://reactcomponents.rjsblog.in)
 
 ## 🙏 Acknowledgments

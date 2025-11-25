@@ -1,5 +1,5 @@
 {
-  "name": "react-templates-free",
+  "name": "rjsblog-free-react-components",
   "version": "1.0.0",
   "description": "A beautiful collection of free, reusable React components for building modern web applications",
   "type": "module",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rajjitlai/react-templates-FREE.git"
+    "url": "https://github.com/rajjitlai/rjsblog_free_react-components.git"
   },
   "homepage": "https://reactcomponents.rjsblog.in",
   "keywords": [
